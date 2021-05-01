@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:firebase/firebase.dart';
-import 'package:firebase/firestore.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -13,9 +13,10 @@ import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'dart:html' as html;
 
 class HomeMainScreen extends StatefulWidget {
-  HomeMainScreen({Key? key}) : super(key: key);
+  HomeMainScreen({Key? key, required this.analytics}) : super(key: key);
   static const routeName = 'HomeMainScreen';
 
+  final FirebaseAnalytics analytics;
   @override
   _HomeMainScreenState createState() => _HomeMainScreenState();
 }
@@ -47,12 +48,12 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
   @override
   void initState() {
     super.initState();
-    initializeApp(
-        apiKey: "AIzaSyBSsQRwaMis7UVx_k6HtbykkW5T2wt53q4",
-        authDomain: "mvc-search.firebaseapp.com",
-        databaseURL: "https://mvc-search-default-rtdb.firebaseio.com",
-        projectId: "mvc-search",
-        storageBucket: "mvc-search.appspot.com");
+    // initializeApp(
+    //     apiKey: "AIzaSyBSsQRwaMis7UVx_k6HtbykkW5T2wt53q4",
+    //     authDomain: "mvc-search.firebaseapp.com",
+    //     databaseURL: "https://mvc-search-default-rtdb.firebaseio.com",
+    //     projectId: "mvc-search",
+    //     storageBucket: "mvc-search.appspot.com");
   }
 
   Future _speak() async {
@@ -93,6 +94,7 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
       setState(() {
         sites = tmpList;
         if (sites.length > 0) {
+          sites..sort((a, b) => a.slotTime.compareTo(b.slotTime));
           _speak();
         }
         print(sites);
@@ -120,6 +122,15 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
     color: Colors.white,
     size: 18.0,
   );
+
+  Future<void> _sendClickTrackingEvent(String clickFrom) async {
+    await widget.analytics.logEvent(
+      name: 'clicks',
+      parameters: <String, dynamic>{
+        'clickfrom': clickFrom,
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -213,7 +224,7 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
                           ),
                           FittedBox(
                             child: Text(
-                              'We know it\'s so hard to find a MVC appointment, \nso we do the search automatically for you',
+                              'We know it\'s so hard to find a MVC appointment in New Jersey, \nso we do the search automatically for you, for free!',
                               style:
                                   TextStyle(color: Colors.white, fontSize: 15),
                             ),
@@ -304,6 +315,8 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
                                         setState(() {
                                           isSearching = !isSearching;
                                           if (isSearching) {
+                                            _sendClickTrackingEvent(
+                                                'start_searching');
                                             subscripStream();
                                           } else {
                                             cancelStreamSubscription();
@@ -385,7 +398,7 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
                                       size: 40,
                                     ),
                                     title: Text(
-                                      sites[index].siteName,
+                                      sites[index].siteName.toUpperCase(),
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 18,
@@ -405,6 +418,8 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     onTap: () {
+                                      _sendClickTrackingEvent(
+                                          'click_on_search_result');
                                       html.window
                                           .open(sites[index].link, 'new tab');
                                     },

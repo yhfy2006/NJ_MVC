@@ -32,7 +32,6 @@ file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.15.
 file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.15.0/lib/src/utils.dart
 file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.15.0/lib/src/wrappers.dart
 file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase-9.0.1/lib/firebase.dart
-file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase-9.0.1/lib/firestore.dart
 file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase-9.0.1/lib/src/analytics.dart
 file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase-9.0.1/lib/src/app.dart
 file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase-9.0.1/lib/src/auth.dart
@@ -59,6 +58,11 @@ file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase-9.0.1/l
 file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase-9.0.1/lib/src/storage.dart
 file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase-9.0.1/lib/src/top_level.dart
 file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase-9.0.1/lib/src/utils.dart
+file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_analytics-8.0.2/lib/firebase_analytics.dart
+file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_analytics-8.0.2/lib/observer.dart
+file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_analytics_platform_interface-2.0.0/lib/firebase_analytics_platform_interface.dart
+file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_analytics_platform_interface-2.0.0/lib/method_channel_firebase_analytics.dart
+file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_analytics_web-0.3.0/lib/firebase_analytics_web.dart
 file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_platform_interface-4.0.0/lib/firebase_core_platform_interface.dart
 file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_platform_interface-4.0.0/lib/src/firebase_core_exceptions.dart
 file:///Users/Shared/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_platform_interface-4.0.0/lib/src/firebase_exception.dart

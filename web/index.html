@@ -15,7 +15,9 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="In New Jersey it's very hard to find a MVC appointment because of the online system, we are here to help you find appointments easliy, for free!">
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="NJ,new jersey,MVC,appointment,searcher,finder,reservation,dmv,real id,renewal,licence"/>
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -40,6 +42,24 @@
 <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBSsQRwaMis7UVx_k6HtbykkW5T2wt53q4",
+    authDomain: "mvc-search.firebaseapp.com",
+    databaseURL: "https://mvc-search-default-rtdb.firebaseio.com",
+    projectId: "mvc-search",
+    storageBucket: "mvc-search.appspot.com",
+    messagingSenderId: "1021439067639",
+    appId: "1:1021439067639:web:04dbbf520d69a3eb63daf2",
+    measurementId: "G-29ES7XJNQB"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:

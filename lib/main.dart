@@ -1,16 +1,25 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:mvc_appointment/home_main_screen.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  static FirebaseAnalytics analytics = FirebaseAnalytics();
+  static FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: analytics);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'NJ MVC Appointment Finder',
+      navigatorObservers: <NavigatorObserver>[observer],
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -23,56 +32,63 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: HomeMainScreen(analytics: analytics),
+      routes: {
+        HomeMainScreen.routeName: (ctx) => HomeMainScreen(
+              analytics: analytics,
+            ),
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+// class MyHomePage extends StatefulWidget {
+//   MyHomePage({Key? key, required this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+//   // This widget is the home page of your application. It is stateful, meaning
+//   // that it has a State object (defined below) that contains fields that affect
+//   // how it looks.
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+//   // This class is the configuration for the state. It holds the values (in this
+//   // case the title) provided by the parent (in this case the App widget) and
+//   // used by the build method of the State. Fields in a Widget subclass are
+//   // always marked "final".
 
-  final String title;
+//   final String title;
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+//   @override
+//   _MyHomePageState createState() => _MyHomePageState();
+// }
 
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: MaterialApp(
-          title: 'NJ MVC',
-          debugShowCheckedModeBanner: false,
+// class _MyHomePageState extends State<MyHomePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: SizedBox(
+//         width: double.infinity,
+//         height: double.infinity,
+//         child: MaterialApp(
+//           title: 'NJ MVC',
+//           debugShowCheckedModeBanner: false,
 
-          // ThemeData(
-          //   // fontFamily: 'Quicksand',
-          //   // primarySwatch: Colors.lightBlue,
-          //   primaryColor: Colors.black,
-          //   accentColor: MyColors.mainAppColor_light,
-          //   // accentColor: MyColors.textHintGrey,
-          //   // scaffoldBackgroundColor: Colors.white,
-          //   visualDensity: VisualDensity.adaptivePlatformDensity,
-          // ),
-          themeMode: ThemeMode.system,
-          home: HomeMainScreen(),
-          routes: {
-            HomeMainScreen.routeName: (ctx) => HomeMainScreen(),
-          },
-        ),
-      ),
-    );
-  }
-}
+//           // ThemeData(
+//           //   // fontFamily: 'Quicksand',
+//           //   // primarySwatch: Colors.lightBlue,
+//           //   primaryColor: Colors.black,
+//           //   accentColor: MyColors.mainAppColor_light,
+//           //   // accentColor: MyColors.textHintGrey,
+//           //   // scaffoldBackgroundColor: Colors.white,
+//           //   visualDensity: VisualDensity.adaptivePlatformDensity,
+//           // ),
+//           themeMode: ThemeMode.system,
+//           home: HomeMainScreen(),
+//           routes: {
+//             HomeMainScreen.routeName: (ctx) => HomeMainScreen(
+//                   analytics: analytics,
+//                 ),
+//           },
+//         ),
+//       ),
+//     );
+//   }
+// }
